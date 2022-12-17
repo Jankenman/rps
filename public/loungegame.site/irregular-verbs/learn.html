@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/loungegame.site/styles/reset.css" />
+    <link rel="stylesheet" href="/loungegame.site/styles/style.css" />
+    <script src="/loungegame.site/scripts/header.js" type="module"></script>
+
+    <link
+      rel="stylesheet"
+      href="/loungegame.site/irregular-verbs/styles/style.css"
+    />
+    <script
+      src="/loungegame.site/irregular-verbs/scripts/header.js"
+      type="module"
+    ></script>
+    <script
+      src="/loungegame.site/irregular-verbs/scripts/learn.js"
+      type="module"
+    ></script>
+
+    <title>RPS Apps</title>
+  </head>
+  <body>
+    <div id="js-header"></div>
+    <div id="js-iv-header"></div>
+    <main class="wrapper">
+      <h1 class="iv-headding">学ぶ</h1>
+      <div id="js-options">
+        <button
+          type="button"
+          id="js-start-button"
+          class="iv-button-default-primary iv-start-button"
+        >
+          始める
+        </button>
+        <div class="iv-options">
+          <label
+            ><input type="checkbox" checked id="js-shuffle" />
+            問題の出題順番をシャッフルする</label
+          >
+        </div>
+      </div>
+      <div id="js-question" class="iv-questions-area">
+        <div class="iv-question-header">
+          <div class="iv-question-index">
+            <span id="iv-index"></span> / <span id="iv-length"></span>
+          </div>
+          <button type="button" id="js-finish" class="iv-button-default-secondary">
+            終了
+          </button>
+        </div>
+
+        <h2 id="js-japanese" class="iv-question-word">
+          
+        </h2>
+
+        <button
+          type="button"
+          id="js-view-answer"
+          class="iv-button-default-primary iv-questin-view-answer"
+        >
+          回答を見る
+        </button>
+
+        <div id="js-answer">
+          <dl class="iv-answer">
+            <div>
+              <dt>原形</dt>
+              <dd id="js-original-form"></dd>
+            </div>
+            <div>
+              <dt>過去形</dt>
+              <dd id="js-past-tense"></dd>
+            </div>
+            <div>
+              <dt>過去分詞</dt>
+              <dd id="past-participle"></dd>
+            </div>
+          </dl>
+
+          <div class="iv-judge-buttons">
+            <button
+              id="js-uncorrect-button"
+              class="iv-button-default-secondary iv-uncorrect-button"
+              type="button"
+            >
+              不正解
+            </button>
+            <button
+              id="js-correct-button"
+              class="iv-button-default-secondary iv-correct-button"
+              type="button"
+            >
+              正答
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

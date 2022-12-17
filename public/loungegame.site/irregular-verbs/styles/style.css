@@ -1,0 +1,327 @@
+/* * {
+  outline: solid 1px;
+} */
+
+/********************
+ * 共通
+ ********************/
+h1.iv-headding {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 10px 0 30px;
+  text-align: center;
+}
+
+/* ボタン */
+.iv-button-default-primary,
+.iv-button-default-secondary {
+  border: none;
+  color: black;
+  display: block;
+  border-radius: 5px;
+  font-size: 14px;
+  min-width: 100px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.iv-button-default-primary {
+  background: #312e81;
+  color: white;
+}
+
+.iv-button-default-secondary {
+  background: #e2e8f0;
+}
+
+
+/********************
+ * ヘッダー
+ ********************/
+
+.iv-app-header {
+  align-items: center;
+  display: flex;
+  gap: 30px;
+  line-height: 60px;
+}
+
+.iv-app-header a {
+  color: var(--default-color);
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.iv-app-header h1 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.iv-app-header nav {
+  flex-grow: 1;
+}
+
+.iv-nav {
+  display: flex;
+  gap: 15px;
+}
+
+.iv-nav li {
+  align-items: center;
+  display: flex;
+}
+
+.iv-rate {
+  background-color: #bbf7d0;
+  border-radius: 50px;
+  padding: 5px 15px;
+  line-height: 1;
+}
+
+.iv-rate span {
+  display: block;
+  font-size: 8px;
+}
+
+/********************
+ * 学習記録
+ ********************/
+
+.iv-graph-area {
+  align-items: center;
+  border: solid 1px #e2e8f0;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.iv-graph-area h2 {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.iv-rate-info {
+  align-items: baseline;
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.iv-graph-area dt {
+  font-size: 14px;
+  color: #64748b;
+  width: 60px;
+}
+
+.iv-graph-area dd {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.iv-graph {
+  align-items: center;
+  border-radius: 50%;
+  display: flex;
+  font-size: 36px;
+  font-weight: bold;
+  flex-direction: column;
+  height: 150px;
+  justify-content: center;
+  margin-right: 30px;
+  order: -1;
+  width: 150px;
+}
+
+.iv-graph span {
+  display: block;
+  font-size: 10px;
+}
+
+/* 学ぶ */
+.iv-questions-area {
+  border: solid 1px #e2e8f0;
+  border-radius: 5px;
+  margin-bottom: 300px;
+  padding: 20px 20px 50px 20px;
+}
+
+.iv-start-button {
+  margin: 0 auto;
+}
+
+.iv-options label {
+  display: block;
+  margin-top: 24px;
+  text-align: center;
+}
+
+.iv-options input[type="checkbox"] {
+  height: 20px;
+  vertical-align: sub;
+  width: 20px;
+}
+
+.iv-question-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.iv-question-index span:first-child {
+  color: #312e81;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.iv-question-word {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  margin: 50px 0 50px;
+}
+
+.iv-questin-view-answer {
+  margin: 0 auto;
+}
+
+.iv-answer {
+  margin: 0 auto;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.iv-answer div {
+  align-items: baseline;
+  display: flex;
+  line-height: 36px;
+}
+
+.iv-answer dt {
+  width: 70px;
+}
+
+.iv-answer dd {
+  color: #312e81;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.iv-judge-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 36px;
+}
+
+.iv-correct-button {
+  background: #16a34a;
+  color: white;
+}
+
+.iv-uncorrect-button {
+  background: #dc2626;
+  color: white;
+}
+
+/********************
+ * 履歴
+ ********************/
+
+.iv-history-area {
+  margin: 50px 0 100px;
+}
+
+.iv-toggle-swither {
+  border: solid 1px #cbd5e1;
+  border-radius: 5px;
+  color: #64748b;
+  display: flex;
+  gap: 10px;
+  margin: 0 auto 20px;
+  padding: 5px 10px;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.iv-toggle-swither div {
+  padding: 5px 10px;
+}
+
+label:has(.input:checked) {
+  background-color: #e2e8f0;
+  border-radius: 5px;
+  color: black;
+}
+
+.iv-history-table {
+  width: 100%;
+  line-height: 36px;
+}
+
+.iv-history-table th,
+.iv-history-table td {
+  border: solid 1px #e2e8f0;
+  border-left: none;
+  border-right: none;
+  padding: 0 3px;
+  text-align: center;
+}
+
+.iv-history-table tbody th {
+  width: 50%;
+}
+
+.iv-history-table tbody td {
+  width: 16.5%;
+}
+
+.iv-history-table a {
+  color: black;
+  display: block;
+}
+
+
+.iv-history-table .max-value {
+  font-weight: bold;
+}
+
+.iv-history-note {
+  margin-top: 20px;
+  opacity: 0.6;
+}
+
+.iv-detail-dialog {
+  border: solid 1px #64748b;
+  border-radius: 5px;
+  max-width: calc(100% - 40px);
+  width: 580px;
+}
+
+.iv-detail-dialog > div {
+  max-height: calc(100vh - 100px);
+  overflow: auto;
+}
+
+.iv-dialog-close {
+  position: sticky;
+  top: 0;
+  padding: 10px;
+
+}
+
+[data-type="word"] .iv-detail-day {
+  display: none;
+}
+
+[data-type="day"] .iv-detail-word {
+  display: none;
+}
+
+.iv-detail-table {
+  margin-top: 50px;
+}

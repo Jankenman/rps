@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/loungegame.site/styles/reset.css" />
+    <link rel="stylesheet" href="/loungegame.site/styles/style.css" />
+    <script src="/loungegame.site/scripts/header.js" type="module"></script>
+
+    <link
+      rel="stylesheet"
+      href="/loungegame.site/irregular-verbs/styles/style.css"
+    />
+    <script
+      src="/loungegame.site/irregular-verbs/scripts/header.js"
+      type="module"
+    ></script>
+    <script
+      src="/loungegame.site/irregular-verbs/scripts/graph.js"
+      type="module"
+    ></script>
+    <script
+      src="/loungegame.site/irregular-verbs/scripts/view-history.js"
+      type="module"
+    ></script>
+
+    <title>RPS Apps</title>
+  </head>
+  <body>
+    <div id="js-header"></div>
+    <div id="js-iv-header"></div>
+    <main class="wrapper">
+      <h1 class="iv-headding">学習記録</h1>
+      <div id="js-graph"></div>
+      <section class="iv-history-area">
+        <header>
+          <form class="iv-toggle-swither">
+            <a href="#/word/">単語別</a>
+            <a href="#/day/">日別</a>
+          </form>
+        </header>
+        <table class="iv-history-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>正答</th>
+              <th>誤答</th>
+              <th>無回答</th>
+            </tr>
+          </thead>
+          <tbody id="js-history-table-body"></tbody>
+        </table>
+        <p class="iv-history-note">
+          ※
+          小数点以下は切捨てされているため，合計が100%にならない可能性があります。
+        </p>
+      </section>
+      <dialog id="js-detail-dialog" class="iv-detail-dialog">
+        <div>
+          <a
+            class="iv-dialog-close iv-button-default-secondary iv-detail-word"
+            href="#/word/"
+            >閉じる</a
+          >
+          <a
+            class="iv-dialog-close iv-button-default-secondary iv-detail-day"
+            href="#/day/"
+            >閉じる</a
+          >
+
+          <h2 id="js-detail-dialog-title" class="iv-question-word"></h2>
+          <dl class="iv-answer iv-detail-word">
+            <div>
+              <dt>原形</dt>
+              <dd id="js-original-form"></dd>
+            </div>
+            <div>
+              <dt>過去形</dt>
+              <dd id="js-past-tense"></dd>
+            </div>
+            <div>
+              <dt>過去分詞</dt>
+              <dd id="js-past-participle"></dd>
+            </div>
+          </dl>
+          <table class="iv-history-table iv-detail-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>正答</th>
+                <th>誤答</th>
+                <th>無回答</th>
+              </tr>
+            </thead>
+            <tbody id="js-history-detail-table-body"></tbody>
+          </table>
+          <p class="iv-history-note">
+            ※
+            小数点以下は切捨てされているため，合計が100%にならない可能性があります。
+          </p>
+        </div>
+      </dialog>
+    </main>
+  </body>
+</html>
