@@ -163,6 +163,41 @@ export class HistoryManager {
 
     return result;
   }
+
+  // 指定された期間のスコアの平均を取得する
+  getScoreAverage(start = 0, end = this.historyLength) {
+    if (start < 0 || end > this.#questionLength) {
+      throw new Error("引数が不正です。");
+    }
+    // 履歴が何もない場合
+    else if (this.#questionLength === 0) {
+      return {
+        collect: 0,
+        incollect: 0,
+        unanswered: 0,
+      };
+    }
+
+    let sumCollect = 0;
+    let sumIncollect = 0;
+    let sumUnanswered = 0;
+
+    const score = this.getDaysScore(start, end);
+
+    score.forEach((val) => {
+      sumCollect += val.collect;
+      sumIncollect += val.incollect;
+      sumUnanswered += val.unanswered;
+    });
+
+    const length = end - start;
+
+    return {
+      collect: sumCollect / length,
+      incollect: sumIncollect / length,
+      unanswered: sumUnanswered / length,
+    };
+  }
 }
 
 export class QuizManager {
