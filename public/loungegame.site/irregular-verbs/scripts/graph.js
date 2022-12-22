@@ -1,10 +1,17 @@
-import { historyManager as history } from "./history.js";
+import { settings } from "./settings.js";
+import { HistoryManager } from "../../scripts/quizmanager/index.js";
 
-const historyLength = history.getHistoryLength();
-const average = history.getAverageByDay(Math.max(historyLength - 5, 0), historyLength)
+const historyManager = new HistoryManager({
+  id: settings.id,
+  questionLength: settings.questionsLegth,
+});
+
+const average = historyManager.getScoreAverage(
+  Math.max(0, historyManager.historyLength - 5)
+);
 
 const collect = Math.floor(average.collect * 100);
-const uncollect = Math.floor(average.uncollect * 100);
+const incollect = Math.floor(average.incollect * 100);
 const unanswered = Math.floor(average.unanswered * 100);
 
 document.getElementById("js-graph").innerHTML = `<section class="iv-graph-area">
@@ -18,7 +25,7 @@ document.getElementById("js-graph").innerHTML = `<section class="iv-graph-area">
       </div>
       <div class="iv-rate-info">
         <dt>誤答率</dt>
-        <dd>${uncollect}%</dd>
+        <dd>${incollect}%</dd>
       </div>
       <div class="iv-rate-info">
         <dt>無回答率</dt>
@@ -35,8 +42,8 @@ document.getElementById("js-graph").innerHTML = `<section class="iv-graph-area">
         #16a34a 0,
         #16a34a ${collect}%,
         #dc2626 ${collect}%,
-        #dc2626 ${collect + uncollect}%,
-        #cbd5e1 ${collect + uncollect}%,
+        #dc2626 ${collect + incollect}%,
+        #cbd5e1 ${collect + incollect}%,
         #cbd5e1 100%
       );
   "

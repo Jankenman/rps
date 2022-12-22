@@ -1,4 +1,15 @@
-import { historyManager as history } from "./history.js";
+import { settings } from "./settings.js";
+import { HistoryManager } from "../../scripts/quizmanager/index.js";
+
+const historyManager = new HistoryManager({
+  id: settings.id,
+  questionLength: settings.questionsLegth,
+});
+
+const score = Math.floor(
+  historyManager.getScoreAverage(Math.max(0, historyManager.historyLength - 5))
+    .collect * 100
+);
 
 document.getElementById("js-iv-header").innerHTML = `<header>
   <div class="wrapper iv-app-header">
@@ -17,7 +28,7 @@ document.getElementById("js-iv-header").innerHTML = `<header>
           <a
             href="/loungegame.site/irregular-verbs/history.html"
             class="iv-rate"
-            ><span>正答率</span>${Math.floor(history.getAverageByDay().collect * 100)}%</a
+            ><span>正答率</span>${score}%</a
           >
         </li>
       </ul>

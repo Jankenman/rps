@@ -1,4 +1,6 @@
-import { manager } from "./app-manager.js";
+import { settings } from "./settings.js";
+import { words } from "./words.js";
+import { QuizManager } from "../../scripts/quizmanager/index.js";
 
 const $answerArea = document.getElementById("js-answer");
 const $correctButton = document.getElementById("js-correct-button");
@@ -7,14 +9,17 @@ const $questionArea = document.getElementById("js-question");
 const $uncorrectButton = document.getElementById("js-uncorrect-button");
 const $viewAnswer = document.getElementById("js-view-answer");
 
-let questions;
+let quizManager;
 
 const finish = () => {
-  location.href = `/loungegame.site/irregular-verbs/history.html#/day/${questions.save()}/`;
+  location.href = `/loungegame.site/irregular-verbs/history.html#/day/${quizManager.save()}/`;
 };
 
 const next = () => {
-  const question = questions.next();
+  const question = quizManager.next();
+  const questionId = question.questionId;
+
+  console.log(question)
 
   if (!question) {
     finish();
@@ -22,21 +27,23 @@ const next = () => {
   }
 
   document.getElementById("iv-index").innerHTML = question.questionIndex + 1;
-  document.getElementById("js-japanese").innerHTML = question.question.japanese;
+  document.getElementById("js-japanese").innerHTML = words[questionId].japanese;
   document.getElementById("js-original-form").innerHTML =
-    question.question.originalForm;
+    words[questionId].originalForm;
   document.getElementById("js-past-tense").innerHTML =
-    question.question.pastTense;
+    words[questionId].pastTense;
   document.getElementById("past-participle").innerHTML =
-    question.question.pastParticiple;
+    words[questionId].pastParticiple;
 };
 
 const gameStart = () => {
-  questions = new manager({
+  quizManager = new QuizManager({
     shuffle: document.getElementById("js-shuffle").checked,
+    questionLength: settings.questionsLegth,
+    id: settings.id,
   });
   document.getElementById("iv-length").innerText =
-    questions.questions.length + "問目";
+    settings.questionsLegth + "問目";
 
   next();
   $optArea.style.display = "none";
@@ -51,7 +58,7 @@ const viewAnswer = () => {
 const judge = (isCorrect) => {
   $answerArea.style.display = "none";
 
-  questions.judge(isCorrect, questions.questions[questions.index].index);
+  quizManager.judge(isCorrect, quizManager.questionId);
   next();
 
   $viewAnswer.style.display = "block";

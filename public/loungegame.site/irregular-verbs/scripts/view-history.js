@@ -1,9 +1,18 @@
+import { settings } from "./settings.js";
 import { words } from "./words.js";
-import { historyManager as history } from "./history.js";
+import {
+  HistoryManager,
+  QuizManager,
+} from "../../scripts/quizmanager/index.js";
 
 const $historyTable = document.getElementById("js-history-table-body");
 const $detailTable = document.getElementById("js-history-detail-table-body");
 const $detailDialog = document.getElementById("js-detail-dialog");
+
+const historyManager = new HistoryManager({
+  id: settings.id,
+  questionLength: settings.questionsLegth,
+});
 
 const formatDate = (date) => {
   return new Date(date).toLocaleDateString("ja-JP", {
@@ -16,19 +25,22 @@ const formatDate = (date) => {
 };
 
 const viewHistoryByWords = () => {
-  if (history.getHistoryLength() === 0) {
+  if (historyManager.questionLength === 0) {
     $historyTable.innerHTML = `<td colspan="4" style="opacity: 0.6;">学習記録がありません。<br /><a href="/loungegame.site/irregular-verbs/learn.html">さぁ あなたも始めましょう!!</a></td>`;
     return;
   }
 
-  const score = history.getWordsAverage();
+  const score = historyManager.getWordsScore(
+    Math.max(historyManager.historyLength - 5, 0)
+  );
+
   let html = "";
 
   for (let i = 0; i < words.length; i++) {
     const collect = Math.floor(score[i].collect * 100);
-    const uncollect = Math.floor(score[i].uncollect * 100);
+    const incollect = Math.floor(score[i].incollect * 100);
     const unanswered = Math.floor(score[i].unanswered * 100);
-    const maxVal = Math.max(collect, uncollect, unanswered);
+    const maxVal = Math.max(collect, incollect, unanswered);
 
     html += "<tr>";
     html += `<th><a href="#/word/${i}/">${words[i].japanese}</a></th>`;
@@ -36,8 +48,8 @@ const viewHistoryByWords = () => {
       maxVal === collect ? "max-value" : ""
     }">${collect}%</td>`;
     html += `<td class="${
-      maxVal === uncollect ? "max-value" : ""
-    }">${uncollect}%</td>`;
+      maxVal === incollect ? "max-value" : ""
+    }">${incollect}%</td>`;
     html += `<td class="${
       maxVal === unanswered ? "max-value" : ""
     }">${unanswered}%</td>`;
@@ -48,34 +60,35 @@ const viewHistoryByWords = () => {
 };
 
 const viewDayAverage = () => {
-  if (history.getHistoryLength() === 0) {
+  if (historyManager.historyLength === 0) {
     $historyTable.innerHTML = `<td colspan="4" style="opacity: 0.6;">学習記録がありません。<br /><a href="/loungegame.site/irregular-verbs/learn.html">さぁ あなたも始めましょう!!</a></td>`;
     return;
   }
 
   let html = "";
 
-  for (let i = 0; i < history.getHistoryLength(); i++) {
-    const historyData = history.getHistoryByIndex(i);
-    const score = history.getDayScore(historyData);
+  const histories = historyManager.getDaysScore();
 
-    const collect = Math.floor((score.collect / words.length) * 100);
-    const uncollect = Math.floor((score.uncollect / words.length) * 100);
-    const unanswered = Math.floor((score.unanswered / words.length) * 100);
-    const maxVal = Math.max(collect, uncollect, unanswered);
+  for (let i = 0; i < historyManager.historyLength; i++) {
+    const score = histories[i];
+
+    const collect = Math.floor(score.collect* 100);
+    const incollect = Math.floor(score.incollect* 100);
+    const unanswered = Math.floor(score.unanswered* 100);
+    const maxVal = Math.max(collect, incollect, unanswered);
 
     html += "<tr>";
 
-    html += `<th><a href="#/day/${i}/">${formatDate(
-      historyData.date
-    )}</a></th>`;
+    console.log(score);
+
+    html += `<th><a href="#/day/${i}/">${formatDate(score.date)}</a></th>`;
 
     html += `<td class="${
       maxVal === collect ? "max-value" : ""
     }">${collect}%</td>`;
     html += `<td class="${
-      maxVal === uncollect ? "max-value" : ""
-    }">${uncollect}%</td>`;
+      maxVal === incollect ? "max-value" : ""
+    }">${incollect}%</td>`;
     html += `<td class="${
       maxVal === unanswered ? "max-value" : ""
     }">${unanswered}%</td>`;
@@ -98,12 +111,12 @@ const viewWordDetail = (index) => {
 
   let html = "";
 
-  for (let i = 0; i < history.getHistoryLength(); i++) {
-    const historyData = history.getHistoryByIndex(i);
+  for (let i = 0; i < historyManager.getHistoryLength(); i++) {
+    const historyData = historyManager.getHistoryByIndex(i);
     const judge = historyData.data[i];
 
     const collect = judge === "1";
-    const uncollect = judge === "2";
+    const incollect = judge === "2";
     const unanswered = judge === "0";
 
     html += "<tr>";
@@ -111,8 +124,8 @@ const viewWordDetail = (index) => {
     html += `<td ${collect ? 'class="max-value"' : ""}>${
       collect ? "○" : ""
     }</td>`;
-    html += `<td ${uncollect ? 'class="max-value"' : ""}>${
-      uncollect ? "○" : ""
+    html += `<td ${incollect ? 'class="max-value"' : ""}>${
+      incollect ? "○" : ""
     }</td>`;
     html += `<td ${unanswered ? 'class="max-value"' : ""}>${
       unanswered ? "○" : ""
@@ -127,7 +140,9 @@ const viewWordDetail = (index) => {
 const viewDayDetail = (index) => {
   $detailDialog.dataset.type = "day";
 
-  const historyData = history.getHistoryByIndex(index);
+  const historyData = historyManager.historyData.history[index];
+
+  console.log(historyData)
 
   document.getElementById("js-detail-dialog-title").innerHTML = formatDate(
     historyData.date
@@ -138,17 +153,17 @@ const viewDayDetail = (index) => {
   for (let i = 0; i < historyData.data.length; i++) {
     const judge = historyData.data[i];
 
-    const collect = judge === "1";
-    const uncollect = judge === "2";
-    const unanswered = judge === "0";
+    const collect = judge === 1;
+    const incollect = judge === 2;
+    const unanswered = judge === 0;
 
     html += "<tr>";
     html += `<td>${words[i].japanese}</td>`;
     html += `<td ${collect ? 'class="max-value"' : ""}>${
       collect ? "○" : ""
     }</td>`;
-    html += `<td ${uncollect ? 'class="max-value"' : ""}>${
-      uncollect ? "○" : ""
+    html += `<td ${incollect ? 'class="max-value"' : ""}>${
+      incollect ? "○" : ""
     }</td>`;
     html += `<td ${unanswered ? 'class="max-value"' : ""}>${
       unanswered ? "○" : ""
