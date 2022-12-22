@@ -1,4 +1,4 @@
 export const settings = {
-  questionsLegth: 61,
+  questionsLegth: 70,
   id: "irregular-verbs"
 }
