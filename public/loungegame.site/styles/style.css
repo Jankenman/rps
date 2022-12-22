@@ -62,3 +62,8 @@ body {
   font-size: 24px;
   margin: 64px 0 24px;
 }
+
+.article p {
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
