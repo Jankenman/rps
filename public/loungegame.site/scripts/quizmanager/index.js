@@ -249,7 +249,7 @@ export class QuizManager {
   }
 
   next() {
-    if (this.#index >= this.#shuffled.length) return false;
+    if (this.#index + 1 >= this.#shuffled.length) return false;
     this.#index++;
     this.#questionId = this.#shuffled[this.#index];
     return {

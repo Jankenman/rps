@@ -111,13 +111,13 @@ const viewWordDetail = (index) => {
 
   let html = "";
 
-  for (let i = 0; i < historyManager.getHistoryLength(); i++) {
-    const historyData = historyManager.getHistoryByIndex(i);
+  for (let i = 0; i < historyManager.historyLength; i++) {
+    const historyData = historyManager.historyData.history[i];
     const judge = historyData.data[i];
 
-    const collect = judge === "1";
-    const incollect = judge === "2";
-    const unanswered = judge === "0";
+    const collect = judge === 1;
+    const incollect = judge === 2;
+    const unanswered = judge === 0;
 
     html += "<tr>";
     html += `<td>${formatDate(historyData.date)}</td>`;
