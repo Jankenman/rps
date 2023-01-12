@@ -380,7 +380,7 @@ export const words = [
   {
     originalForm: "wear",
     pastTense: "wore",
-    pastParticiple: "wom",
+    pastParticiple: "worn",
     japanese: "身に着けている",
   },
   {
