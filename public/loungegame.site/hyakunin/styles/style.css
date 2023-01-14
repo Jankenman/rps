@@ -1,0 +1,59 @@
+.app,
+button {
+  font-family: serif;
+}
+
+button {
+  font-weight: bold;
+}
+
+.app-wrapper {
+  margin: 0 auto;
+  width: 1800px;
+  max-width: calc(100% - 20px);
+}
+
+.app {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.settings {
+  text-align: center;
+}
+
+.settings h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 50px 0;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto 20px;
+}
+
+.app-header span {
+  font-size: 50px;
+}
+
+.app-header .tool-buttons {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.hyakunin-text {
+  --line-height: 1.7;
+  --font-size: 70px;
+
+  writing-mode: vertical-rl;
+  line-height: var(--line-height);
+  font-size: var(--font-size);
+  font-weight: bold;
+  margin: 0 auto;
+  overflow: hidden;
+}

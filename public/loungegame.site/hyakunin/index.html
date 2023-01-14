@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/loungegame.site/styles/reset.css" />
+    <link rel="stylesheet" href="/loungegame.site/styles/style.css" />
+    <script src="/loungegame.site/scripts/header.js" type="module"></script>
+
+    <link rel="stylesheet" href="/loungegame.site/hyakunin/styles/style.css" />
+    <script src="/loungegame.site/hyakunin/scripts/index.js" type="module"></script>
+
+    <title>百人一首 読み上げ - RPS Apps</title>
+  </head>
+  <body>
+    <div id="js-header"></div>
+    <main id="js-app" class="app app-wrapper">
+      <div id="js-settings" class="settings">
+        <h1>百人一首 読み上げ</h1>
+        <button id="js-start-button">始める</button>
+      </div>
+      <div id="js-main" style="display: none;">
+        <header class="app-header wrapper">
+          <div><span id="js-index">0</span> / 100句目</div>
+          <div class="tool-buttons">
+            <button type="button" id="js-toggle-fullscreen">全画面切り替え</button>
+            <button type="button" id="js-back-button">< 前へ</button>
+            <button type="button" id="js-next-button">次へ ></button>
+          </div>
+        </header>
+        <div>
+          <p id="js-hyakunin-text" class="hyakunin-text">
+          </p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
