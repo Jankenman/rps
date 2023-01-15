@@ -57,7 +57,7 @@ const next = (steps = 1) => {
   setTimeout(() => {
     if (stepId !== _id) return;
     $text.innerText = yomi.slice(0, 2).join("\n") + "\n…";
-  }, 4500);
+  }, 5000);
   setTimeout(() => {
     if (stepId !== _id) return;
     $text.innerText = yomi.slice(0, 3).join("\n") + "\n…";
@@ -65,11 +65,11 @@ const next = (steps = 1) => {
   setTimeout(() => {
     if (stepId !== _id) return;
     $text.innerText = yomi.slice(0, 4).join("\n") + "\n…"
-  }, 14000);
+  }, 15000);
   setTimeout(() => {
     if (stepId !== _id) return;
     $text.innerText = yomi.join("\n")
-  }, 18000);
+  }, 19000);
 };
 
 const start = () => {
