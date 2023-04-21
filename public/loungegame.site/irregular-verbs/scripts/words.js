@@ -333,7 +333,7 @@ export const words = [
     originalForm: "rise",
     pastTense: "rose",
     pastParticiple: "risen",
-    japanese: "昇る，アガル",
+    japanese: "昇る，上がる",
   },
   {
     originalForm: "see",
