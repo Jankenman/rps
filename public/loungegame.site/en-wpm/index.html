@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/loungegame.site/styles/reset.css" />
+    <link rel="stylesheet" href="/loungegame.site/styles/style.css" />
+    <script src="/loungegame.site/scripts/header.js" type="module"></script>
+
+    <link rel="stylesheet" href="/loungegame.site/en-wpm/styles/style.css">
+    <script src="/loungegame.site/en-wpm/scripts/index.js" async></script>
+
+    <title>RPS Apps</title>
+  </head>
+  <body>
+    <div id="js-header"></div>
+    <main class="wrapper">
+      <h1 class="wpm-app-name">英語 WPM 練習</h1>
+      <div id="js-wpm-settings" class="wpm-settings">
+        <h2 class="wpm-headding">設定</h2>
+        <label>時間: <input type="number" min="1" value="60" id="js-wpm-time"></label>
+        <button type="button" id="js-wpm-start">始める</button>
+      </div>
+      <div id="js-wpm-app-main" class="wpm-app-main">
+        <div id="js-wpm-app-graph" class="wpm-app-graph">
+          <h2>WPM</h2>
+          <div id="wpm" class="wpm-app-graph-wpm">0</div>
+          <div id="seconds" class="wpm-app-graph-seconds">話し始めたらスタート</div>
+        </div>
+        <button type="button" onclick="location.reload()" style="margin: 10px auto;">もう一度!!</button>
+      </div>
+    </main>
+  </body>
+</html>
