@@ -36,6 +36,22 @@ input[type="button"] {
   min-width: 112px;
 }
 
+.wpm-information {
+  background: #dcfce7;
+  border: solid 1px #16a34a;
+  border-radius: 3px;
+  line-height: 1.7;
+  margin: 24px 0;
+  padding: 24px;
+}
+
+.wpm-information h3 {
+  color: #14532d;
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
 .wpm-settings {
   align-items: center;
   display: flex;

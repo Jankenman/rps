@@ -22,17 +22,27 @@
           >時間: <input type="number" min="1" value="60" id="js-wpm-time"
         /></label>
         <button type="button" id="js-wpm-start">始める</button>
+        <div class="wpm-information">
+          <h3>注意</h3>
+          音声認識は使用ブラウザに依存します。そのため，音声認識の精度がブラウザにより，異なります。<br />
+          Microsoft Edge では Microsoft 社の音声認識AIが，Google Chrome では
+          Google 社の音声認識AIが，Safari では Apple
+          社の音声認識AIが使用されます。
+        </div>
       </div>
       <div id="js-wpm-app-main" class="wpm-app-main">
         <div id="js-wpm-app-graph" class="wpm-app-graph">
-          <h2>WPM</h2>
+          <h3>WPM</h3>
           <div id="wpm" class="wpm-app-graph-wpm">0</div>
           <div id="seconds" class="wpm-app-graph-seconds">
             話し始めたらスタート
           </div>
           <div id="js-wpm-words" class="wpm-words-count">0語</div>
         </div>
-        <label><input type="checkbox" class="wpm-paragraph-is-showed" /> 全文を表示する</label>
+        <label
+          ><input type="checkbox" class="wpm-paragraph-is-showed" />
+          全文を表示する</label
+        >
         <div id="js-wpm-paragraph" class="wpm-paragraph">
           認識の結果がここに表示されます
         </div>
