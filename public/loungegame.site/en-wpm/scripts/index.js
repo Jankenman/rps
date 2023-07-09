@@ -91,9 +91,7 @@ const start = () => {
 };
 
 const main = () => {
-  const SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
-
-  if(!SpeechRecognition) {
+  if(!window.SpeechRecognition && !window.webkitSpeechRecognition) {
     alert("あなたのブラウザは対応していません。\nMicrosoft Edge(PCのみ対応)，Safari，Google Chrome，Chromebook等でお試しください。")
   }
 
